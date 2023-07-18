@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import axios from "axios";
 
 import { ApiResponse } from "./use-fetch.types";
 
@@ -7,16 +6,18 @@ export const useFetch = (url: string, token?: string): ApiResponse => {
   const [data, setData] = useState<any>();
   const [error, setError] = useState(false);
 
-  const fetch = useCallback(async () => {
+  const fetchGet = useCallback(async () => {
     setError(false);
     try {
-      const fetchedData = await axios.get(url, {
+      const fetchedData = await fetch(url, {
+        method: "GET",
         headers: {
           accept: 'application/json',
           Authorization: token ? `Bearer ${token}` : ""
         }
       });
-      setData(fetchedData.data);
+      const json = await fetchedData.json();
+      setData(json);
     } catch {
       setError(true);
     }
@@ -25,6 +26,6 @@ export const useFetch = (url: string, token?: string): ApiResponse => {
   return {
     data,
     error,
-    fire: fetch,
+    fire: fetchGet,
   };
 };
