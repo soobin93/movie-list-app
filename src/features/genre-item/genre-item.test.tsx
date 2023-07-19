@@ -13,9 +13,9 @@ describe("GenreItem component", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it('should render the correct id and name', () => {
-    render(<GenreItem id={1} name="Fiction" />);
-    const messageElement = screen.getByText('1: Fiction');
+  it("should render the correct id and name", () => {
+    render(<GenreItem {...defaultProps} />);
+    const messageElement = screen.getByText(/1: action/i);
     expect(messageElement).toBeInTheDocument();
   });
 });
