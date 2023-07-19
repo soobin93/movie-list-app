@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 import { useFetch } from "./features/hooks/use-fetch";
+import { CheckEven } from "./features/check-even";
 import { Button } from "./features/ui/button";
 import { GenreItem } from "./features/genre-item";
 
@@ -29,6 +30,9 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Even Number Checker</h1>
+      <CheckEven />
+
       <h1>Shall we find out what movie genres out there</h1>
 
       <div className={styles.buttonContainer}>
