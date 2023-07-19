@@ -22,4 +22,3 @@ describe("App component", () => {
     expect(buttonElement).toBeInTheDocument();
   });
 });
-
